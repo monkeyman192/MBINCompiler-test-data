@@ -70,23 +70,29 @@ create_release()
     "https://api.github.com/repos/$owner/$repo/releases?access_token=$github_api_token"
 }
 
-# First, check to see if the local tag is equal to the release tag
-if [[ $local_tag == $latest_tag ]]
-then
-    # In this case we want to remove the most recent release and the tag associated with it
-    curl -X DELETE -H "$AUTH" "https://api.github.com/repos/$owner/$repo/releases/$id"
-    curl -X DELETE -H "$AUTH" "https://api.github.com/repos/$owner/$repo/refs/tags/$latest_tag"
-    curl -X DELETE -H "$AUTH" "https://api.github.com/repos/$owner/$repo/releases/assets/$asset_id"
-    # Then create a new release
-    create_release
-# Else, if the tag provided here is greater than the most recent release then create a new release
-elif [[ $local_tag > $latest_tag ]]
+# If there is no release, then make one
+if [[ $latest_tag == null ]]
 then
     create_release
 else
-    # In this case we have a version number that is behind the current release on github
-    echo "Provided version tag is behind the current releases"
-    exit 1
+    # First, check to see if the local tag is equal to the release tag
+    if [[ $local_tag == $latest_tag ]]
+    then
+        # In this case we want to remove the most recent release and the tag associated with it
+        curl -X DELETE -H "$AUTH" "https://api.github.com/repos/$owner/$repo/releases/$id"
+        curl -X DELETE -H "$AUTH" "https://api.github.com/repos/$owner/$repo/refs/tags/$latest_tag"
+        curl -X DELETE -H "$AUTH" "https://api.github.com/repos/$owner/$repo/releases/assets/$asset_id"
+        # Then create a new release
+        create_release
+    # Else, if the tag provided here is greater than the most recent release then create a new release
+    elif [[ $local_tag > $latest_tag ]]
+    then
+        create_release
+    else
+        # In this case we have a version number that is behind the current release on github
+        echo "Provided version tag is behind the current releases"
+        exit 1
+    fi
 fi
 
 # Get the id of the new release so we can upload assets to it
