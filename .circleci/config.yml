@@ -1,0 +1,56 @@
+version: 2
+jobs:
+    zip-data:
+        docker:
+            - image: debian:stretch
+        steps:
+            - checkout
+            - run:
+                name: install dependencies
+                command: |
+                  apt-get update
+                  apt-get install -y zip
+                  apt-get install -y ca-certificates
+            - run:
+                name: zip data
+                command: |
+                  mkdir dist
+                  zip dist/data.zip -r data
+            - persist_to_workspace:
+                root: dist
+                paths: data.zip
+            - store_artifacts:
+                path: dist/data.zip
+                destination: dist/data.zip
+    release-data:
+        docker:
+            - image: debian:stretch
+        steps:
+            - checkout
+            - run:
+                name: install dependencies
+                command: |
+                  apt-get update
+                  apt-get install -y ca-certificates
+                  apt-get install -y curl
+                  apt-get install -y jq
+            - attach_workspace:
+                at: dist
+            - run:
+                name: ensure script is executable
+                command: chmod +x ./upload-github-release-asset.sh
+            - run:
+                name: run script
+                command: bash ./upload-github-release-asset.sh github_api_token=${GITHUB_TOKEN} owner=monkeyman192 repo=MBINCompiler-test-data filename=./dist/data.zip
+
+workflows:
+    version: 2
+    build:
+        jobs:
+            - zip-data
+            - release-data:
+                requires:
+                    - zip-data
+                filters:
+                    branches:
+                        only: master
