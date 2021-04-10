@@ -9,7 +9,7 @@
 # inaccurate.
 
 __author__ = "monkeyman192"
-__version__ = "1.0"
+__version__ = "1.1"
 
 from hashlib import sha256
 import os.path as op
@@ -44,9 +44,18 @@ if __name__ == "__main__":
     for test_file, vanilla_file in files.items():
         full_vanilla_path = op.join(pcbanks_folder, vanilla_file)
         full_test_path = op.join(DATA_FOLDER, test_file)
+        # If the file in the index cannot be found in the unpacked folder print
+        # an error then continue.
         if not op.exists(full_vanilla_path):
             print(f'Cannot find {full_vanilla_path} in PCBANKS folder...')
             continue
+        # If the file doesn't exist in the test data but is in the index, then
+        # just copy it over.
+        if not op.exists(full_test_path):
+            print(f'Adding {full_vanilla_path} to the test data')
+            if not DRYRUN:
+                shutil.copy(full_vanilla_path, op.dirname(full_test_path))
+            different_files += 1
         with open(full_vanilla_path, 'rb') as fv:
             vanilla_hash = sha256(fv.read()).hexdigest()
         with open(full_test_path, 'rb') as ft:
