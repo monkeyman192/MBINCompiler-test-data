@@ -9,10 +9,12 @@
 # inaccurate.
 
 __author__ = "monkeyman192"
-__version__ = "1.1"
+__version__ = "1.2"
 
 from hashlib import sha256
+import os
 import os.path as op
+import re
 import shutil
 from tkinter import Tk, filedialog
 import xml.etree.ElementTree as ET
@@ -20,19 +22,30 @@ import xml.etree.ElementTree as ET
 
 # A flag to indicate that we don't want to actually replace any files and to
 # just analyse the files.
-DRYRUN = False
+DRYRUN = True
+# If True then we will go over the entire PCBANKS folder to look for new
+# classes.
+DISCOVER_NEW = True
+# Regex expression to find and classes in .mbin files
+CLASS_PATT = re.compile(b'(c(?:(?:Tk)|(?:Gc))\\w*)')
 DATA_FOLDER = op.join(op.dirname(__file__), '../data')
-index = op.join(DATA_FOLDER, 'index.xml')
+INDEX = op.join(DATA_FOLDER, 'index.xml')
+FOLDERS = ('METADATA', 'MODELS', 'SCENES', 'TEXTURES', 'UI')
+XML_FMT = '\t\t<file name="{0}" path="{1}"/>\n'
+
+class_mapping = dict()
+wanted_files = {x: set() for x in FOLDERS}
+tree = ET.parse(INDEX)
+root_ = tree.getroot()
+
 
 if __name__ == "__main__":
     window = Tk()
     pcbanks_folder = filedialog.askdirectory(title="Select PCBANKS folder")
-    tree = ET.parse(index)
-    root = tree.getroot()
     files = {}
     different_files = 0
 
-    for child in root:
+    for child in root_:
         if child.tag == 'folder':
             # In this case the child is a folder containing files
             for file in child:
@@ -66,3 +79,55 @@ if __name__ == "__main__":
                 shutil.copy(full_vanilla_path, op.dirname(full_test_path))
             different_files += 1
     print(f'Updated: {different_files}/{len(files)} have changed!')
+
+    if DISCOVER_NEW:
+        # Iterate over the whole pcbanks folder
+        for folder_name in FOLDERS:
+            count = 0
+            print(f'Considering {folder_name}...')
+            for root, dirs, files in os.walk(
+                    op.join(pcbanks_folder, folder_name)):
+                for file in files:
+                    filepath = op.join(root, file)
+                    rel_path = op.relpath(filepath, pcbanks_folder)
+                    if (op.splitext(filepath)[1] != '.MBIN' or
+                            filepath.endswith('MATERIAL.MBIN') or
+                            filepath.endswith('DESCRIPTOR.MBIN') or
+                            filepath.endswith('SCENE.MBIN') or
+                            filepath.endswith('MATERIAL.MBIN')):
+                        continue
+                    count += 1
+                    with open(filepath, 'rb') as f:
+                        data = f.read()
+                        size = f.tell()
+                    for m in re.findall(CLASS_PATT, data):
+                        if m in class_mapping:
+                            if size > class_mapping[m][0]:
+                                class_mapping[m] = (size, folder_name,
+                                                    filepath)
+                        else:
+                            class_mapping[m] = (size, folder_name, filepath)
+                    del data
+                    if count % 100 == 0:
+                        print(count)
+            print(f'Considered {folder_name} ({count})')
+        for k, v in class_mapping.items():
+            wanted_files[v[1]].add(v[2])
+        for k, v in wanted_files.items():
+            if not op.exists(op.join(DATA_FOLDER, k)):
+                os.makedirs(op.join(DATA_FOLDER, k), exist_ok=True)
+            # Get a list of all the attribs in the folder for comparison.
+            node = root_.find(f".//folder[@name='{k}']")
+            # Get all the attribs
+            attribs = [x.attrib for x in node.iter('file')]
+            for full_path in v:
+                fname = op.basename(full_path)
+                dst_path = op.join(DATA_FOLDER, k, fname)
+                if not op.exists(dst_path):
+                    shutil.copy(full_path, op.dirname(dst_path))
+                att = {'name': fname,
+                       'path': op.relpath(full_path, pcbanks_folder)}
+                if att not in attribs:
+                    node.append(ET.Element('file', att))
+        print(f'{len(class_mapping)} classes found')
+        tree.write(INDEX)
