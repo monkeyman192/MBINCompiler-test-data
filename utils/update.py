@@ -25,7 +25,7 @@ import xml.etree.ElementTree as ET
 DRYRUN = False
 # If True then we will go over the entire PCBANKS folder to look for new
 # classes.
-DISCOVER_NEW = False
+DISCOVER_NEW = True
 # Regex expression to find and classes in .mbin files
 CLASS_PATT = re.compile(b'(c(?:(?:Tk)|(?:Gc))\\w*)')
 DATA_FOLDER = op.join(op.dirname(__file__), '../data')
