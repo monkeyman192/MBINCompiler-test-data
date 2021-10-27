@@ -41,7 +41,7 @@ root_ = tree.getroot()
 
 if __name__ == "__main__":
     window = Tk()
-    unpacked-PCBANKS_folder = filedialog.askdirectory(title="Select unpacked-PCBANKS folder")
+    unpacked_PCBANKS_folder = filedialog.askdirectory(title="Select unpacked-PCBANKS folder")
     files = {}
     different_files = 0
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
             # These are just globals.
             files[child.attrib['name']] = child.attrib['path']
     for test_file, vanilla_file in files.items():
-        full_vanilla_path = op.join(unpacked-PCBANKS_folder, vanilla_file)
+        full_vanilla_path = op.join(unpacked_PCBANKS_folder, vanilla_file)
         full_test_path = op.join(DATA_FOLDER, test_file)
         # If the file in the index cannot be found in the unpacked folder print
         # an error then continue.
@@ -86,10 +86,10 @@ if __name__ == "__main__":
             count = 0
             print(f'Considering {folder_name}...')
             for root, dirs, files in os.walk(
-                    op.join(unpacked-PCBANKS_folder, folder_name)):
+                    op.join(unpacked_PCBANKS_folder, folder_name)):
                 for file in files:
                     filepath = op.join(root, file)
-                    rel_path = op.relpath(filepath, unpacked-PCBANKS_folder)
+                    rel_path = op.relpath(filepath, unpacked_PCBANKS_folder)
                     if (op.splitext(filepath)[1] != '.MBIN' or
                             filepath.endswith('MATERIAL.MBIN') or
                             filepath.endswith('DESCRIPTOR.MBIN') or
@@ -126,7 +126,7 @@ if __name__ == "__main__":
                 if not op.exists(dst_path):
                     shutil.copy(full_path, op.dirname(dst_path))
                 att = {'name': fname,
-                       'path': op.relpath(full_path, unpacked-PCBANKS_folder)}
+                       'path': op.relpath(full_path, unpacked_PCBANKS_folder)}
                 if att not in attribs:
                     node.append(ET.Element('file', att))
         print(f'{len(class_mapping)} classes found')
