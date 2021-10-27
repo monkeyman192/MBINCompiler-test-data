@@ -4,7 +4,7 @@
 # USAGE: Run this file with python. It will prompt you to select the folder
 # that has all your files extracted to.
 # This script will overwrite the files in the data folder with the ones from
-# the PCBANKS folder specified.
+# the unpacked-PCBANKS folder specified.
 # NOTE: Ensure that these files are up to date, otherwise this analysis will be
 # inaccurate.
 
@@ -23,7 +23,7 @@ import xml.etree.ElementTree as ET
 # A flag to indicate that we don't want to actually replace any files and to
 # just analyse the files.
 DRYRUN = False
-# If True then we will go over the entire PCBANKS folder to look for new
+# If True then we will go over the entire unpacked-PCBANKS folder to look for new
 # classes.
 DISCOVER_NEW = True
 # Regex expression to find and classes in .mbin files
@@ -41,7 +41,7 @@ root_ = tree.getroot()
 
 if __name__ == "__main__":
     window = Tk()
-    pcbanks_folder = filedialog.askdirectory(title="Select PCBANKS folder")
+    unpacked-PCBANKS_folder = filedialog.askdirectory(title="Select unpacked-PCBANKS folder")
     files = {}
     different_files = 0
 
@@ -55,12 +55,12 @@ if __name__ == "__main__":
             # These are just globals.
             files[child.attrib['name']] = child.attrib['path']
     for test_file, vanilla_file in files.items():
-        full_vanilla_path = op.join(pcbanks_folder, vanilla_file)
+        full_vanilla_path = op.join(unpacked-PCBANKS_folder, vanilla_file)
         full_test_path = op.join(DATA_FOLDER, test_file)
         # If the file in the index cannot be found in the unpacked folder print
         # an error then continue.
         if not op.exists(full_vanilla_path):
-            print(f'Cannot find {full_vanilla_path} in PCBANKS folder...')
+            print(f'Cannot find {full_vanilla_path} in unpacked-PCBANKS folder...')
             continue
         # If the file doesn't exist in the test data but is in the index, then
         # just copy it over.
@@ -81,15 +81,15 @@ if __name__ == "__main__":
     print(f'Updated: {different_files}/{len(files)} have changed!')
 
     if DISCOVER_NEW:
-        # Iterate over the whole pcbanks folder
+        # Iterate over the whole unpacked-PCBANKS folder
         for folder_name in FOLDERS:
             count = 0
             print(f'Considering {folder_name}...')
             for root, dirs, files in os.walk(
-                    op.join(pcbanks_folder, folder_name)):
+                    op.join(unpacked-PCBANKS_folder, folder_name)):
                 for file in files:
                     filepath = op.join(root, file)
-                    rel_path = op.relpath(filepath, pcbanks_folder)
+                    rel_path = op.relpath(filepath, unpacked-PCBANKS_folder)
                     if (op.splitext(filepath)[1] != '.MBIN' or
                             filepath.endswith('MATERIAL.MBIN') or
                             filepath.endswith('DESCRIPTOR.MBIN') or
@@ -126,7 +126,7 @@ if __name__ == "__main__":
                 if not op.exists(dst_path):
                     shutil.copy(full_path, op.dirname(dst_path))
                 att = {'name': fname,
-                       'path': op.relpath(full_path, pcbanks_folder)}
+                       'path': op.relpath(full_path, unpacked-PCBANKS_folder)}
                 if att not in attribs:
                     node.append(ET.Element('file', att))
         print(f'{len(class_mapping)} classes found')
