@@ -1,0 +1,31 @@
+name: MBINCompiler-test-data
+
+on:
+  # Run on all branches except for the gh-pages branch
+  push:
+    branches:
+      - 'test'
+
+jobs:
+  build:
+    name: Package the test data and release it
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Zip the data
+        run: |
+          mkdir dist
+          zip dist/data.zip -r data
+      - name: Get game version from .version file
+        run: |
+          echo "VERSION=$(cat data/.version | awk '{print $1}')" >> $GITHUB_ENV
+        shell: bash
+      - name: Upload resources and release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "${{ env.VERSION }}"
+          tag_name: ${{ env.VERSION }}
+          body: "MBINCompiler test data for NMS Steam BuildID: ${{ env.VERSION }}"
+          files: dist/data.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
