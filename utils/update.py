@@ -12,6 +12,7 @@ __author__ = "monkeyman192"
 __version__ = "1.2"
 
 from hashlib import sha256
+import sys
 import os
 import os.path as op
 import re
@@ -41,7 +42,7 @@ root_ = tree.getroot()
 
 if __name__ == "__main__":
     window = Tk()
-    unpacked_PCBANKS_folder = filedialog.askdirectory(title="Select unpacked-PCBANKS folder")
+    unpacked_PCBANKS_folder = sys.argv[1] if len(sys.argv) >= 2 else filedialog.askdirectory(title="Select unpacked-PCBANKS folder")
     files = {}
     different_files = 0
 
