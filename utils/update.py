@@ -66,6 +66,7 @@ if __name__ == "__main__":
         # If the file doesn't exist in the test data but is in the index, then
         # just copy it over.
         if not op.exists(full_test_path):
+            os.makedirs(op.dirname(full_test_path), exist_ok=True)
             print(f'Adding {full_vanilla_path} to the test data')
             if not DRYRUN:
                 shutil.copy(full_vanilla_path, op.dirname(full_test_path))
