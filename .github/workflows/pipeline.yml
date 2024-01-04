@@ -1,45 +1,42 @@
 name: MBINCompiler-test-data
 
 on:
-  # Run on all branches except for the gh-pages branch
   push:
-    branches-ignore:
-      - 'gh-pages'
-  pull_request:
-    branches-ignore:
-      - 'gh-pages'
-  create:
+    branches: 'master'
 
 jobs:
   build:
     name: Package files
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
       - name: Zip the data folder
         run: |
           mkdir dist
           zip dist/data.zip -r data
+
       - name: Store zip for release
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: test-data
           path: |
             dist/data.zip
             data/.version
+
   release:
     name: Release MBINCompiler-test-data
     runs-on: ubuntu-latest
-    needs: [build]
-    # Only run on the master branch
-    if: github.ref == 'refs/heads/master'
+    needs: build
     steps:
       - name: Collect artefacts for release
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: test-data
+
       - name: Get MBINCompiler-test-data tag version
         run: echo "VERSION=$(cat ./data/.version)" >> $GITHUB_ENV
+
       - name: Upload resources to release
         uses: softprops/action-gh-release@v1
         with:
