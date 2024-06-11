@@ -38,7 +38,7 @@ jobs:
         run: echo "VERSION=$(cat ./data/.version)" >> $GITHUB_ENV
 
       - name: Upload resources to release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: ${{ env.VERSION }}
           tag_name: ${{ env.VERSION }}
