@@ -20,6 +20,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-data
+          include-hidden-files: true
           path: |
             dist/data.zip
             data/.version
