@@ -31,7 +31,7 @@ DISCOVER_NEW = True
 CLASS_PATT = re.compile(b'(c(?:(?:Tk)|(?:Gc))\\w*)')
 DATA_FOLDER = op.join(op.dirname(__file__), '../data')
 INDEX = op.join(DATA_FOLDER, 'index.xml')
-FOLDERS = ('METADATA', 'MODELS', 'SCENES', 'TEXTURES', 'UI')
+FOLDERS = ('METADATA', 'MODELS', 'SCENES', 'TEXTURES', 'UI', 'GLOBALS')
 XML_FMT = '\t\t<file name="{0}" path="{1}"/>\n'
 
 class_mapping = dict()
