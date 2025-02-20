@@ -1,22 +1,22 @@
 {
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.AnimMBIN.pak": [
+  "NMSARC.AnimMBIN.pak": [
     "models/common/player/playercharacter/anims/interaction/general/0h_spotter_ships_arrive.anim.mbin",
     "models/planets/creatures/triceratopsrig/anims/tripose.anim.mbin",
     "models/common/player/playercharacter/anims/ride/antelope/ride_antelope_idle.anim.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.EntitySceneMBIN.pak": [
+  "NMSARC.EntitySceneMBIN.pak": [
     "scenes/galaxymap/pstream.scene.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.fonts.pak": [
+  "NMSARC.fonts.pak": [
     "fonts/fonttable.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.MeshMisc.pak": [
+  "NMSARC.MeshMisc.pak": [
     "models/effects/smoke/smoke_black.mbin",
     "models/effects/creatures/floodsparks.mbin",
     "models/effects/explosion/asteroiddestroy.mbin",
     "models/effects/explosion/shipexplode.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.MetadataEtc.pak": [
+  "NMSARC.MetadataEtc.pak": [
     "metadata/enginesettings/tkgamesettings.mbin",
     "metadata/enginesettings/tkenginesettingsmapping.mbin",
     "metadata/enginesettings/playeranimdetailsettings.mbin",
@@ -90,7 +90,7 @@
     "metadata/input/gcopenvrcontrollers.mbin",
     "metadata/input/gctriggerfeedbackstatetable.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.Precache.pak": [
+  "NMSARC.Precache.pak": [
     "models/effects/heavyair/alien/alien.heavyair.mbin",
     "models/effects/trails/drone/landdronetrail.trail.mbin",
     "metadata/reality/tables/basebuildingcoststable.mbin",
@@ -410,13 +410,13 @@
     "ui/rocketlockerpage.mbin",
     "ui/swappagenew.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.Scenes.pak": [
+  "NMSARC.Scenes.pak": [
     "scenes/common/defaultsettings.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.UI.pak": [
+  "NMSARC.UI.pak": [
     "ui/swappage.mbin"
   ],
-  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\GAMEDATA\\PCBANKS\\NMSARC.globals.pak": [
+  "NMSARC.globals.pak": [
     "gccharacterglobals.global.mbin",
     "gcfishingglobals.global.mbin",
     "gcplayerglobals.global.mbin",
