@@ -88,7 +88,8 @@
     "metadata/gamestate/playermissionmappingpatch0to1.mbin",
     "metadata/input/gclefthandedvriconreplacementtable.mbin",
     "metadata/input/gcopenvrcontrollers.mbin",
-    "metadata/input/gctriggerfeedbackstatetable.mbin"
+    "metadata/input/gctriggerfeedbackstatetable.mbin",
+    "metadata/animation/animationmaskidtable.mbin"
   ],
   "NMSARC.Precache.pak": [
     "models/effects/heavyair/alien/alien.heavyair.mbin",
