@@ -405,6 +405,7 @@
     "models/space/spacestation/modularparts/dock/pirates/burningbarrel/entities/data.entity.mbin",
     "models/space/spacestation/modularpartstypeb/dock/landingpad_builder/entities/shipbuilderterminal.entity.mbin",
     "models/space/spacestation/modularpartstypeb/dock/launchtube/entities/launchtubedata.entity.mbin",
+    "models/planets/common/buildings/robot/robotbase/entities/robotweaponcrate.entity.mbin",
     "ui/bytebeat/bytebeatoperatorslot.mbin",
     "ui/components/managefleet/journeyboxes.mbin",
     "ui/pet_eggmodify.mbin",
