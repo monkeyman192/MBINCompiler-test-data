@@ -14,7 +14,8 @@
   "models/effects/smoke/smoke_black.mbin": 1035501127,
   "models/effects/creatures/floodsparks.mbin": 1035501127,
   "models/effects/explosion/asteroiddestroy.mbin": 1035501127,
-  "models/effects/explosion/shipexplode.mbin": 1035501127
+  "models/effects/explosion/shipexplode.mbin": 1035501127,
+  "models/space/spacestation/modularparts/dock/back_section/entities/poiipad.data.mbin": 3924832637
  },
  "NMSARC.MetadataEtc.pak": {
   "metadata/enginesettings/tkgamesettings.mbin": 2500478569,
@@ -89,7 +90,11 @@
   "metadata/input/gclefthandedvriconreplacementtable.mbin": 1382325631,
   "metadata/input/gcopenvrcontrollers.mbin": 1310020322,
   "metadata/input/gctriggerfeedbackstatetable.mbin": 2579062031,
-  "metadata/animation/animationmaskidtable.mbin": 3573406062
+  "metadata/animation/animationmaskidtable.mbin": 3573406062,
+  "language/nms_loc1_english.mbin": 4175162212,
+  "metadata/effects/water/meshwaterqualitysettings.mbin": 4119118511,
+  "metadata/effects/water/waterdata.mbin": 3570461288,
+  "metadata/enginesettings/tkiosperdevicesettings.mbin": 4152702206
  },
  "NMSARC.Precache.pak": {
   "models/effects/heavyair/alien/alien.heavyair.mbin": 1696777900,
@@ -405,7 +410,10 @@
   "ui/components/managefleet/journeyboxes.mbin": 2706491807,
   "ui/pet_eggmodify.mbin": 2706491807,
   "ui/rocketlockerpage.mbin": 2706491807,
-  "ui/swappagenew.mbin": 2706491807
+  "ui/swappagenew.mbin": 2706491807,
+  "models/common/demos/e32015/models/resourcefragmentsalt.descriptor.mbin": 1076242767,
+  "metadata/simulation/solarsystem/atmosphere/gasgiantatmospherelist.mbin": 4279530012,
+  "metadata/ui/editor/editorstyledata.mbin": 3924072788
  },
  "NMSARC.Scenes.pak": {
   "scenes/common/defaultsettings.mbin": 1367402441
@@ -448,6 +456,22 @@
   "gcaudioglobals.global.mbin": 735925416,
   "gccreatureglobals.mbin": 3507915581,
   "gcfleetglobals.global.mbin": 3442361228,
-  "gcscratchpadglobals.global.mbin": 2318602857
+  "gcscratchpadglobals.global.mbin": 2318602857,
+  "gcbuildableshipglobals.global.mbin": 3391402993
+ },
+ "NMSARC.MeshCommon.pak": {
+  "models/common/player/playercharacter/anims/character.animcomponent.data.mbin": 1463458473,
+  "models/common/player/playercharacter/anims/npc.ikcomponent.data.mbin": 987534339,
+  "models/common/player/playercharacter/audio/character.audiocomponent.data.mbin": 485703496,
+  "models/common/player/playercharacter/cloth/clothcomponent.data.mbin": 371049606,
+  "models/common/player/playercharacter/npc.scantorevealcomponent.data.mbin": 1812084204,
+  "models/common/player/playercharacter/springattachment/springcomponent.data.mbin": 4575907
+ },
+ "NMSARC.MeshPlanetBIOMES.pak": {
+  "models/planets/biomes/common/buildings/parts/buildableparts/decoration/fossils/entities/fossilhologramcomponentdata.mbin": 2512032917
+ },
+ "NMSARC.MeshPlanetCREATURES.pak": {
+  "models/planets/creatures/common/creature.interactioncomponent.data.mbin": 199378597,
+  "models/planets/creatures/common/creature.netreplicatedentitycomponent.data.mbin": 1181446410
  }
 }
