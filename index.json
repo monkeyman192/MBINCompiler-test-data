@@ -413,7 +413,12 @@
   "models/common/demos/e32015/models/resourcefragmentsalt.descriptor.mbin": 1076242767,
   "metadata/simulation/solarsystem/atmosphere/gasgiantatmospherelist.mbin": 4279530012,
   "metadata/ui/editor/editorstyledata.mbin": 3924072788,
-  "metadata/reality/tables/gravitygundatatable.mbin": 1220069178
+  "metadata/reality/tables/gravitygundatatable.mbin": 1220069178,
+  "metadata/reality/tables/petshopitemstable.mbin": 3200888762,
+  "metadata/simulation/gametables/dice/gametabledicedatatable.mbin": 1273154077,
+  "metadata/simulation/gametables/gametablesdatatable.mbin": 1636475853,
+  "metadata/simulation/gametables/petbattler/petbattlermovesetstable.mbin": 3673386539,
+  "metadata/simulation/gametables/petbattler/petbattlermovestable.mbin": 1227234291
  },
  "NMSARC.Scenes.pak": {
   "scenes/common/defaultsettings.mbin": 1367402441
@@ -458,7 +463,8 @@
   "gcfleetglobals.global.mbin": 3442361228,
   "gcscratchpadglobals.global.mbin": 2318602857,
   "gcbuildableshipglobals.global.mbin": 3391402993,
-  "gcgravitygunglobals.global.mbin": 2344095503
+  "gcgravitygunglobals.global.mbin": 2344095503,
+  "gcgametableglobals.mbin": 2166541939
  },
  "NMSARC.MeshCommon.pak": {
   "models/common/player/playercharacter/anims/character.animcomponent.data.mbin": 1463458473,
