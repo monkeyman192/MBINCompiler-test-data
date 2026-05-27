@@ -418,7 +418,8 @@
   "metadata/simulation/gametables/dice/gametabledicedatatable.mbin": 1273154077,
   "metadata/simulation/gametables/gametablesdatatable.mbin": 1636475853,
   "metadata/simulation/gametables/petbattler/petbattlermovesetstable.mbin": 3673386539,
-  "metadata/simulation/gametables/petbattler/petbattlermovestable.mbin": 1227234291
+  "metadata/simulation/gametables/petbattler/petbattlermovestable.mbin": 1227234291,
+  "metadata/reality/tables/itemdescriptionoverridetable.mbin": 1970580961
  },
  "NMSARC.Scenes.pak": {
   "scenes/common/defaultsettings.mbin": 1367402441
@@ -473,7 +474,9 @@
   "models/common/player/playercharacter/cloth/clothcomponent.data.mbin": 371049606,
   "models/common/player/playercharacter/npc.scantorevealcomponent.data.mbin": 1812084204,
   "models/common/player/playercharacter/springattachment/springcomponent.data.mbin": 4575907,
-  "models/common/robots/shared/entities/physicsobjects.tagcomponent.mbin": 3130685311
+  "models/common/robots/shared/entities/physicsobjects.tagcomponent.mbin": 3130685311,
+  "models/common/spacecraft/swarm/parts/cannonentities/cannonarm.shootablecomponent.mbin": 2012334100,
+  "models/common/spacecraft/swarm/parts/cannonentities/cannonarm.sketchcomponent.mbin": 1761165759
  },
  "NMSARC.MeshPlanetBIOMES.pak": {
   "models/planets/biomes/common/buildings/parts/buildableparts/decoration/fossils/entities/fossilhologramcomponentdata.mbin": 2512032917
