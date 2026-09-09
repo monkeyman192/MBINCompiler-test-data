@@ -15,7 +15,9 @@
   "models/effects/creatures/floodsparks.mbin": 1035501127,
   "models/effects/explosion/asteroiddestroy.mbin": 1035501127,
   "models/effects/explosion/shipexplode.mbin": 1035501127,
-  "models/space/spacestation/modularparts/dock/back_section/entities/poiipad.data.mbin": 3924832637
+  "models/space/spacestation/modularparts/dock/back_section/entities/poiipad.data.mbin": 3924832637,
+  "models/space/poi/hulk/entities/common.destructablecomponent.mbin": 4235242467,
+  "models/space/poi/hulk/entities/common.recyclablecomponent.mbin": 1162926825
  },
  "NMSARC.MetadataEtc.pak": {
   "metadata/enginesettings/tkgamesettings.mbin": 2500478569,
@@ -418,7 +420,10 @@
   "metadata/simulation/gametables/gametablesdatatable.mbin": 1636475853,
   "metadata/simulation/gametables/petbattler/petbattlermovesetstable.mbin": 3673386539,
   "metadata/simulation/gametables/petbattler/petbattlermovestable.mbin": 1227234291,
-  "metadata/reality/tables/itemdescriptionoverridetable.mbin": 1970580961
+  "metadata/reality/tables/itemdescriptionoverridetable.mbin": 1970580961,
+  "metadata/reality/tables/salvageeventtable.mbin": 2668929941,
+  "metadata/simulation/ecosystem/swarmdatatable.mbin": 336665041,
+  "metadata/simulation/solarsystem/spacepoi/spacepoitable.mbin": 3447998428
  },
  "NMSARC.Scenes.pak": {
   "scenes/common/defaultsettings.mbin": 1367402441
